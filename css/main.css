@@ -653,4 +653,62 @@ body {
 .driver-card:hover img {
     transform: scale(1.03);
 }
+/* =========================
+   TABLET ADAPTATION
+   ========================= */
 
+@media (max-width: 1400px) {
+
+    .drivers-section {
+        min-height: auto;
+    }
+
+    .drivers-header {
+        padding: 24px 32px 0;
+        justify-content: flex-start;
+    }
+
+    .drivers-header h2 {
+        font-size: 52px;
+    }
+
+    .drivers-track {
+        justify-content: center;
+        gap: 20px;
+
+        margin-top: 10px;
+        padding: 30px 32px 50px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .driver-card-small {
+        width: 280px;
+        height: 395px;
+    }
+
+    .driver-card-medium {
+        width: 320px;
+        height: 451px;
+    }
+
+    .driver-card-main {
+        width: 360px;
+        height: 508px;
+    }
+
+    .driver-info h3 {
+        font-size: 28px;
+    }
+    .hero::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.65) 0%,
+        rgba(10, 10, 10, 0.70) 25%,
+        rgba(10, 10, 10, 0.78) 50%,
+        rgba(10, 10, 10, 0.90) 75%,
+        #0A0A0A 100%
+    );
+}
+}
