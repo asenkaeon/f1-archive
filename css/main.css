@@ -1202,3 +1202,103 @@ body {
     letter-spacing: 2px;
     color: #8A8A8A;
 }
+
+.season-track-wrapper {
+    width: 100%;
+    overflow: visible;
+}
+
+.season-track {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+
+    width: 100%;
+    padding: 20px 0 60px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+}
+
+.season-track::-webkit-scrollbar {
+    display: none;
+}
+
+.season-race {
+    position: relative;
+
+    flex: 0 0 250px;
+    height: 330px;
+
+    padding: 28px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background: #111111;
+
+    color: #FFFFFF;
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.season-round {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+
+    color: #555555;
+}
+
+.season-country {
+    margin-bottom: 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: #E10600;
+}
+
+.season-race strong {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 86px;
+    line-height: .8;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.season-race strong.dnf {
+    color: #555555;
+}
+
+.season-points {
+    margin-top: 14px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+
+    color: #FFFFFF;
+}
+
+.season-date {
+    margin-top: 5px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+
+    color: #555555;
+}
