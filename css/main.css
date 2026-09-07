@@ -51,6 +51,8 @@ body {
     gap: 10px;
 
     color: #FFFFFF;
+
+    text-decoration: none;
 }
 
 .logo-f1 {
@@ -452,7 +454,7 @@ body {
 
 .drivers-header h2 {
     font-family: "Bebas Neue", sans-serif;
-    font-size: 64px;
+    font-size: 80px;
     font-weight: 400;
     letter-spacing: 4px;
 }
@@ -469,11 +471,11 @@ body {
 .drivers-track {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     gap: 32px;
 
-    margin-top: 30px;
+    margin-top: -30px;
     padding: 80px 48px 90px;
 
     overflow-x: auto;
@@ -504,7 +506,7 @@ body {
     text-decoration: none;
 
     transition:
-        transform 0.3s ease,
+        transform 0.5s ease,
         border-color 0.3s ease,
         box-shadow 0.3s ease;
     isolation: isolate;
@@ -512,19 +514,30 @@ body {
 
 /* Размеры карточек */
 
-.driver-card-small {
-    width: 360px;
-    height: 508px;
-}
-
-.driver-card-medium {
+.driver-card {
     width: 400px;
     height: 564px;
+    transform: scale(1);
+    transform-origin: center center;
+    transition:
+        transform 0.5s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.driver-card-main {
-    width: 460px;
-    height: 650px;
+.driver-card.is-small {
+    transform: scale(0.9);
+}
+
+.driver-card.is-medium {
+    transform: scale(1);
+}
+
+.driver-card.is-main {
+    transform: scale(1.15);
+    z-index: 3;
+    margin-left: 32px;
+    margin-right: 32px;
 }
 
 /* Фотография */
@@ -543,20 +556,28 @@ body {
 }
 
 /* Затемнение фотографии */
-.driver-card-small img {
+.driver-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.driver-card img {
     filter: brightness(0.35);
 }
 
-.driver-card-medium img {
+.driver-card.is-small img {
+    filter: brightness(0.35);
+}
+
+.driver-card.is-medium img {
     filter: brightness(0.6);
 }
 
-.driver-card-main img {
-    filter: brightness(1);
-}
-
-.driver-card-small:hover img,
-.driver-card-medium:hover img {
+.driver-card.is-main img {
     filter: brightness(1);
 }
 
@@ -639,10 +660,13 @@ body {
 
 /* Hover */
 
+.driver-card {
+    box-shadow: none;
+    border-color: transparent;
+}
+
 .driver-card:hover {
     border-color: #E10600;
-
-    transform: scale(1);
 
     box-shadow:
         0 0 12px rgba(225, 6, 0, 0.9),
@@ -650,9 +674,6 @@ body {
         0 0 80px rgba(225, 6, 0, 0.4);
 }
 
-.driver-card:hover img {
-    transform: scale(1.03);
-}
 /* =========================
    TABLET ADAPTATION
    ========================= */
@@ -673,29 +694,14 @@ body {
     }
 
     .drivers-track {
-        justify-content: center;
-        gap: 20px;
+        justify-content: flex-start;
+        gap: 32px;
 
         margin-top: 10px;
         padding: 30px 32px 50px;
 
         overflow-x: auto;
         overflow-y: hidden;
-    }
-
-    .driver-card-small {
-        width: 280px;
-        height: 395px;
-    }
-
-    .driver-card-medium {
-        width: 320px;
-        height: 451px;
-    }
-
-    .driver-card-main {
-        width: 360px;
-        height: 508px;
     }
 
     .driver-info h3 {
@@ -711,4 +717,488 @@ body {
         #0A0A0A 100%
     );
 }
+}
+
+
+/* =========================================
+   DRIVER PROFILE
+   ========================================= */
+
+.driver-page {
+    background: #0A0A0A;
+    color: #FFFFFF;
+    min-height: 100vh;
+}
+
+.driver-page .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+/* HERO */
+
+.driver-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+    background: #0A0A0A;
+}
+
+.driver-hero-image {
+    position: absolute;
+    inset: 0;
+}
+
+.driver-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.driver-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.05) 35%,
+            rgba(0, 0, 0, 0.55) 65%,
+            #0A0A0A 100%
+        );
+}
+
+.driver-hero-content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 64px 70px;
+}
+
+.driver-hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.driver-hero-meta span:first-child {
+    color: #E10600;
+}
+
+.driver-hero-meta span:last-child {
+    color: #FFFFFF;
+}
+
+.driver-hero-meta span:last-child {
+    font-size: 18px;
+}
+
+.driver-hero h1 {
+    margin: 0;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(90px, 12vw, 190px);
+    line-height: 0.78;
+    letter-spacing: 6px;
+    font-weight: 400;
+}
+
+.driver-hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-top: 45px;
+}
+
+.driver-nationality {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #FFFFFF;
+}
+
+.driver-championship {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.driver-position {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 82px;
+    line-height: 0.75;
+    color: #E10600;
+}
+
+.driver-championship div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.driver-championship .label {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8A8A8A;
+}
+
+.driver-championship strong {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* PROFILE SECTIONS */
+
+.driver-section {
+    padding: 120px 64px;
+    background: #0A0A0A;
+}
+
+.driver-career {
+    padding-bottom: 0;
+}
+
+.driver-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+
+.driver-section-header .section-label {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    color: #E10600;
+    letter-spacing: 2px;
+}
+
+.driver-section-header h2 {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.driver-season .driver-section-header {
+    transform: translateY(-100px);
+}
+
+.career-placeholder,
+.stats-placeholder,
+.season-placeholder,
+.team-placeholder {
+    min-height: 200px;
+    border-top: 1px solid #252525;
+    padding-top: 30px;
+
+    font-family: "Inter", sans-serif;
+    color: #8A8A8A;
+}
+
+/* BOTTOM NAVIGATION */
+
+.driver-navigation {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 50px 64px;
+    border-top: 1px solid #252525;
+
+    background: #0A0A0A;
+}
+
+.driver-navigation a {
+    color: #FFFFFF;
+    text-decoration: none;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    transition: color 0.25s ease;
+}
+
+.driver-navigation a:hover {
+    color: #E10600;
+}
+
+.driver-nav-links a {
+    color: #8A8A8A;
+    transition: color 0.25s ease;
+}
+
+.driver-nav-links a.active {
+    color: #FFFFFF;
+}
+
+.driver-nav-links a:hover {
+    color: #E10600;
+}
+
+.drivers-page {
+    min-height: 100vh;
+    background: #0A0A0A;
+    color: #FFFFFF;
+}
+
+.drivers-page .navbar {
+    position: relative;
+    z-index: 20;
+}
+
+.drivers-page .drivers-section {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.drivers-page .drivers-header {
+    padding: 40px 48px 0;
+}
+
+.drivers-header h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 80px;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.drivers-header {
+    transform: translateY(-30px);
+}
+
+.drivers-page .nav-links a {
+    color: #8A8A8A;
+}
+
+.drivers-page .nav-links a.active {
+    color: #FFFFFF;
+}
+
+.drivers-page .nav-links a:hover {
+    color: #E10600;
+}
+
+.career-timeline {
+    position: relative;
+    width: calc(100% - 128px);
+    margin: 0 auto;
+    padding: 45px 0 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.career-timeline::before {
+    content: "";
+    position: absolute;
+    top: 95px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #333333;
+}
+
+.career-event {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+}
+
+.career-year {
+    margin-bottom: 18px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.career-line {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.career-line span {
+    position: absolute;
+    top: -12px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #E10600;
+    border-radius: 50%;
+    background: #0A0A0A;
+}
+
+.career-info {
+    padding: 10px 18px 0;
+}
+
+.career-team {
+    color: #E10600;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.career-info h3 {
+    margin: 7px 0 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 27px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #FFFFFF;
+}
+
+.career-info p {
+    max-width: 175px;
+    margin: 8px auto 0;
+    color: #8A8A8A;
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.career-data-wall {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.15fr 1.85fr;
+    gap: 70px;
+    min-height: 420px;
+    border: none;
+}
+
+/* Главный показатель */
+
+.data-wall-main {
+    position: relative;
+    padding: 50px 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+}
+
+.data-wall-index {
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #555555;
+}
+
+.data-wall-main-value {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.data-wall-main-value strong {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 190px;
+    line-height: .72;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #E10600;
+}
+
+.data-wall-main-value span {
+    padding-bottom: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.data-wall-bar {
+    width: 100%;
+    height: 2px;
+    background: #252525;
+    overflow: hidden;
+}
+
+.data-wall-bar span {
+    display: block;
+    width: 78%;
+    height: 100%;
+    background: #E10600;
+}
+
+.data-wall-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #555555;
+}
+
+
+/* Остальные показатели */
+
+.data-wall-records {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.data-wall-record {
+    position: relative;
+    padding: 35px 35px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.data-wall-record .data-wall-index {
+    position: absolute;
+    top: 18px;
+    left: 35px;
+}
+
+.data-wall-record strong {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 72px;
+    line-height: .8;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.data-wall-record > span:last-child {
+    margin-top: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #8A8A8A;
 }

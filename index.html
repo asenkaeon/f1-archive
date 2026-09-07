@@ -28,7 +28,7 @@
         </div>
 
         <div class="nav-links">
-            <a href="#">DRIVERS</a>
+            <a href="drivers.html">DRIVERS</a>
             <a href="#">TEAMS</a>
             <a href="#">CIRCUITS</a>
             <a href="#">SEASONS</a>
@@ -42,7 +42,7 @@
     </nav>
     <div class="mobile-menu">
 
-    <a href="#">DRIVERS</a>
+    <a href="drivers.html">DRIVERS</a>
     <a href="#">TEAMS</a>
     <a href="#">CIRCUITS</a>
     <a href="#">SEASONS</a>
@@ -67,107 +67,7 @@
 </div>
 
 </main>
-<section class="drivers-section">
 
-    <div class="drivers-header">
-        <span class="section-label">01</span>
-        <h2>DRIVERS</h2>
-    </div>
-
-<div class="drivers-track-wrapper">
-
-    <div class="drivers-track">
-
-        <a href="#" class="driver-card driver-card-small">
-    <img src="images/pia.jpg" alt="Oscar Piastri">
-
-    <div class="driver-card-top">
-        <span class="team-logo">MCLAREN</span>
-        <span class="position">7th</span>
-    </div>
-
-    <div class="driver-info">
-        <h3>Oscar Piastri</h3>
-        <p>Australia · #81</p>
-    </div>
-</a>
-
-<a href="#" class="driver-card driver-card-medium">
-    <img src="images/lec.jpg" alt="Charles Leclerc">
-
-    <div class="driver-card-top">
-        <span class="team-logo">FERRARI</span>
-        <span class="position">5th</span>
-    </div>
-
-    <div class="driver-info">
-        <h3>Charles Leclerc</h3>
-        <p>Monaco · #16</p>
-    </div>
-</a>
-
-<a href="#" class="driver-card driver-card-main">
-    <img src="images/ver.jpg" alt="Max Verstappen">
-
-    <div class="driver-card-top">
-        <span class="team-logo">RED BULL</span>
-        <span class="position">6th</span>
-    </div>
-
-    <div class="driver-info">
-        <h3>Max Verstappen</h3>
-        <p>Netherlands · #33</p>
-    </div>
-</a>
-
-<a href="#" class="driver-card driver-card-medium">
-    <img src="images/ant.jpg" alt="Kimi Antonelli">
-
-    <div class="driver-card-top">
-        <span class="team-logo">MERCEDES</span>
-        <span class="position">1st</span>
-    </div>
-
-    <div class="driver-info">
-        <h3>Kimi Antonelli</h3>
-        <p>Italy · #12</p>
-    </div>
-</a>
-
-<a href="#" class="driver-card driver-card-small">
-    <img src="images/alo.jpg" alt="Fernando Alonso">
-
-    <div class="driver-card-top">
-        <span class="team-logo">ASTON MARTIN</span>
-        <span class="position">10th</span>
-    </div>
-
-    <div class="driver-info">
-        <h3>Fernando Alonso</h3>
-        <p>Spain · #14</p>
-    </div>
-</a>
-
-    </div>
-</div>
-
-</section>
-<script>
-    const menuButton = document.querySelector(".menu-button");
-    const mobileMenu = document.querySelector(".mobile-menu");
-
-menuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("active");
-    menuButton.classList.toggle("active");
-});
-const driversTrack = document.querySelector(".drivers-track");
-
-driversTrack.addEventListener("wheel", (event) => {
-    event.preventDefault();
-
-    driversTrack.scrollLeft += event.deltaY;
-});
-</script>
 </body>
 
 </html>
