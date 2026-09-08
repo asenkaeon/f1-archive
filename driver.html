@@ -253,14 +253,17 @@
     <div class="season-track">
 
         <article class="season-race">
-            <span class="season-round">01</span>
-            <span class="season-country">AUSTRALIA</span>
-            <strong>P6</strong>
-            <span class="season-points">8 PTS</span>
-            <span class="season-date">08 MAR 2026</span>
-        </article>
+    <img src="images/drivers/max-verstappen/2026/MVR1.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
+
+    <span class="season-round">01</span>
+    <span class="season-country">AUSTRALIA</span>
+    <strong>P6</strong>
+    <span class="season-points">8 PTS</span>
+    <span class="season-date">08 MAR 2026</span>
+</article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR2.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">02</span>
             <span class="season-country">CHINA</span>
             <strong class="dnf">DNF</strong>
@@ -269,6 +272,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR3.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">03</span>
             <span class="season-country">JAPAN</span>
             <strong>P8</strong>
@@ -277,6 +281,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR4.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">04</span>
             <span class="season-country">MIAMI</span>
             <strong>P5</strong>
@@ -285,6 +290,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR5.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">05</span>
             <span class="season-country">CANADA</span>
             <strong>P3</strong>
@@ -293,6 +299,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR6.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">06</span>
             <span class="season-country">MONACO</span>
             <strong class="dnf">DNF</strong>
@@ -301,6 +308,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR7.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">07</span>
             <span class="season-country">BARCELONA</span>
             <strong>P4</strong>
@@ -309,6 +317,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR8.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">08</span>
             <span class="season-country">AUSTRIA</span>
             <strong>P2</strong>
@@ -317,6 +326,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR9.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">09</span>
             <span class="season-country">GREAT BRITAIN</span>
             <strong class="dnf">DNF</strong>
@@ -325,6 +335,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR10.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">10</span>
             <span class="season-country">BELGIUM</span>
             <strong>P3</strong>
@@ -333,6 +344,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR11.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">11</span>
             <span class="season-country">HUNGARY</span>
             <strong>P2</strong>
@@ -341,6 +353,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR12.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">12</span>
             <span class="season-country">NETHERLANDS</span>
             <strong class="dnf">DNF</strong>
@@ -349,6 +362,7 @@
         </article>
 
         <article class="season-race">
+    <img src="images/drivers/max-verstappen/2026/MVR13.jpg" alt="Max Verstappen — Australian Grand Prix 2026">
             <span class="season-round">13</span>
             <span class="season-country">ITALY</span>
             <strong>P3</strong>
@@ -358,7 +372,7 @@
 
     </div>
 
-</div>
+</div>  
 
     </section>
 
@@ -393,6 +407,18 @@
 
 </main>
 
-</body>
+<script>
+    const seasonTrack = document.querySelector('.season-track');
 
+    if (seasonTrack) {
+        seasonTrack.addEventListener('wheel', (event) => {
+            if (event.deltaY !== 0) {
+                event.preventDefault();
+                seasonTrack.scrollLeft += event.deltaY;
+            }
+        }, { passive: false });
+    }
+</script>
+
+</body>
 </html>
