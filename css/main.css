@@ -223,6 +223,11 @@ body {
         font-size: 18px;
     }
 }
+
+.mobile-menu {
+    display: none;
+}
+
 @media (width <= 600px) {
 
     .hero {
